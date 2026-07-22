@@ -1,0 +1,142 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN74YEDpaHXbeC2n25gbVsH",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/anaksl/2026.7.22/blob/main/practice1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "k4mKdkmI4In1"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UF0LG_9zaCEq",
+        "outputId": "5f2b245d-62aa-4bda-efa0-1ae709823a44"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "species\n",
+            "setosa        1.462\n",
+            "versicolor    4.260\n",
+            "virginica     5.552\n",
+            "Name: petal_length, dtype: float64\n"
+          ]
+        }
+      ],
+      "source": [
+        "import seaborn as sns\n",
+        "df_iris = sns.load_dataset('iris')\n",
+        "print(df_iris.groupby('species')['petal_length'].mean())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import seaborn as sns\n",
+        "df_tips = sns.load_dataset('tips')\n",
+        "df_tips['tip_rate'] = df_tips['tip'] / df_tips['total_bill']\n",
+        "print(df_tips.groupby('day')['tip_rate'].mean())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sw3JGhlA4hZs",
+        "outputId": "86f81d8e-8527-4a07-9737-e641cbbf10cf"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "day\n",
+            "Thur    0.161276\n",
+            "Fri     0.169913\n",
+            "Sat     0.153152\n",
+            "Sun     0.166897\n",
+            "Name: tip_rate, dtype: float64\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/tmp/ipykernel_1602/2802639415.py:4: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.\n",
+            "  print(df_tips.groupby('day')['tip_rate'].mean())\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import seaborn as sns\n",
+        "df_penguins = sns.load_dataset('penguins')\n",
+        "print(df_penguins.isnull().sum())\n",
+        "print(df_penguins.groupby('sex')['body_mass_g'].mean())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_MV4kXpK5ryF",
+        "outputId": "de5f0a9e-c36f-4d0b-eabd-3ede3b5bdaa4"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "species               0\n",
+            "island                0\n",
+            "bill_length_mm        2\n",
+            "bill_depth_mm         2\n",
+            "flipper_length_mm     2\n",
+            "body_mass_g           2\n",
+            "sex                  11\n",
+            "dtype: int64\n",
+            "sex\n",
+            "Female    3862.272727\n",
+            "Male      4545.684524\n",
+            "Name: body_mass_g, dtype: float64\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
